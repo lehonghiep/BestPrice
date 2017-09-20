@@ -1,8 +1,10 @@
-package com.checongbinh.lazada.ConnectInternet;
+package com.honghiep.bestprice.connectinternet;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.honghiep.bestprice.model.trangchu.xulymenuitem.XuLyMenuItem;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,117 +24,27 @@ import java.util.Map;
 /**
  * Created by Lenovo S410p on 6/25/2016.
  */
-public class DownloadJSON extends AsyncTask<String,Void,String> {
-    String duongdan;
-    List<HashMap<String,String>> attrs;
-    StringBuilder dulieu;
-    boolean method = true;
-
-    public DownloadJSON(String duongdan){
-        this.duongdan = duongdan;
-        method = true;
-    }
-
-    public DownloadJSON(String duongdan, List<HashMap<String,String>> attrs){
-        this.duongdan = duongdan;
-        this.attrs = attrs;
-        method = false;
-    }
-
-    @Override
-    protected String doInBackground(String... strings) {
-        String data = "";
+public class DownloadJSON {
+    public static String getJson(String api){
+        String link="http://192.168.100.17:8080"+api;
+        URL url = null;
         try {
-            URL url = new URL(duongdan);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-            if(!method){
-                data = methodPost(httpURLConnection);
-            }else{
-                data = methodGet(httpURLConnection);
+            url = new URL(link);
+            String content = "";
+            InputStream in = url.openStream();
+            byte b[] = new byte[1024];
+            int le = in.read(b);
+            while (le >= 0 ) {
+                content = content + new String(b, 0, le);
+                le = in.read(b);
             }
-
-
+            in.close();
+            return content;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Log.d("dulieu",data);
-        return data;
+        return null;
     }
-
-    private String methodGet(HttpURLConnection httpURLConnection){
-        String data = "";
-        InputStream inputStream = null;
-        try {
-            httpURLConnection.connect();
-            inputStream = httpURLConnection.getInputStream();
-            InputStreamReader reader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-
-            dulieu = new StringBuilder();
-            String line = "";
-            while ((line = bufferedReader.readLine()) !=null){
-                dulieu.append(line);
-            }
-
-            data = dulieu.toString();
-            bufferedReader.close();
-            reader.close();
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return data;
-    }
-
-    private String methodPost(HttpURLConnection httpURLConnection){
-        String data = "";
-        String key = "";
-        String value = "";
-
-        try {
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-
-            Uri.Builder builder = new Uri.Builder();
-
-            int count = attrs.size();
-            for(int i=0;i<count;i++){
-
-                for(Map.Entry<String,String> values : attrs.get(i).entrySet()){
-                     key = values.getKey();
-                     value = values.getValue();
-                }
-
-                builder.appendQueryParameter(key,value);
-            }
-            String query = builder.build().getEncodedQuery();
-
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            OutputStreamWriter streamWriter = new OutputStreamWriter(outputStream);
-            BufferedWriter writer = new BufferedWriter(streamWriter);
-
-            writer.write(query);
-            writer.flush();
-            writer.close();
-            streamWriter.close();
-            outputStream.close();
-
-            data = methodGet(httpURLConnection);
-
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return data;
-    }
-
 }

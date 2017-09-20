@@ -1,18 +1,18 @@
-package com.honghiep.lazada.adapter;
+package com.honghiep.bestprice.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.honghiep.lazada.view.trangchu.fragment.FragmentChuongTrinhKhuyenMai;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentDienTu;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentLamDep;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentMeVaBe;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentNhaCuaVaDoiSong;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentNoiBat;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentTheThaoVaDuLich;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentThoiTrang;
-import com.honghiep.lazada.view.trangchu.fragment.FragmentThuongHieu;
+import com.honghiep.bestprice.model.news.News;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentXuTheTieuDung;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentReviews;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentOtoXeMayXeDap;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentDienLanh;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentTuVanMuaSam;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentThongTinThiTruong;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentSanPhamChoMe;
+import com.honghiep.bestprice.view.trangchu.fragment.FragmentMeoVat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,28 +22,28 @@ import java.util.List;
  */
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-    List<Fragment> listFragment = new ArrayList<>();
-List<String>titleFragment=new ArrayList<>();
+    private List<Fragment> listFragment = new ArrayList<>();
+    private List<String>titleFragment=new ArrayList<>();
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        listFragment.add(new FragmentNoiBat());
-        listFragment.add(new FragmentChuongTrinhKhuyenMai());
-        listFragment.add(new FragmentDienTu());
-        listFragment.add(new FragmentNhaCuaVaDoiSong());
-        listFragment.add(new FragmentMeVaBe());
-        listFragment.add(new FragmentLamDep());
-        listFragment.add(new FragmentThoiTrang());
-        listFragment.add(new FragmentTheThaoVaDuLich());
-        listFragment.add(new FragmentThuongHieu());
-        titleFragment.add("Nổi bật");
-        titleFragment.add("Chương trình khuyến mại");
-        titleFragment.add("Điện tử");
-        titleFragment.add("Nhà cửa và đời sống");
-        titleFragment.add("Mẹ và bé");
-        titleFragment.add("Làm đẹp");
-        titleFragment.add("Thời trang");
-        titleFragment.add("Thể thao và du lịch");
-        titleFragment.add("Thương hiệu");
+        listFragment.add(new FragmentThongTinThiTruong());
+        listFragment.add(new FragmentXuTheTieuDung());
+        listFragment.add(new FragmentReviews());
+        listFragment.add(new FragmentTuVanMuaSam());
+        listFragment.add(new FragmentDienLanh());
+        listFragment.add(new FragmentOtoXeMayXeDap());
+        listFragment.add(new FragmentMeoVat());
+        listFragment.add(new FragmentSanPhamChoMe());
+
+        titleFragment.add("Thông tin thị trường");
+        titleFragment.add("Xu thế tiêu dùng");
+        titleFragment.add("REVIEWS");
+        titleFragment.add("Tư vấn mua sắm");
+        titleFragment.add("Điện lạnh");
+        titleFragment.add("Ô Tô - Xe Máy- Xe Đạp");
+        titleFragment.add("Mẹo vặt");
+        titleFragment.add("Sản phẩm cho mẹ");
+
     }
 
     @Override

@@ -1,16 +1,13 @@
-package com.honghiep.bestprice.presenter.trangchu;
+package com.honghiep.bestprice.presenter.trangchu.menuitem;
 
 import com.honghiep.bestprice.adapter.IExpandAdapter;
 import com.honghiep.bestprice.connectinternet.DownloadJSON;
 import com.honghiep.bestprice.model.menuitem.MenuItemChild;
 import com.honghiep.bestprice.model.menuitem.MenuItemParent;
 import com.honghiep.bestprice.model.trangchu.xulymenuitem.XuLyMenuItem;
+import com.honghiep.bestprice.presenter.trangchu.menuitem.IPresenterXuLyMenu;
 import com.honghiep.bestprice.view.trangchu.IViewXuLyMenu;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.honghiep.bestprice.presenter.trangchu.news;
+package com.honghiep.bestprice.model.news;
 
 import com.honghiep.bestprice.connectinternet.DownloadJSON;
 import com.honghiep.bestprice.model.news.News;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by honghiep on 13/09/2017.
  */
 
-public class PresenterXulyNews {
+public class XulyNews {
     private List<News>newsListThongTinThiTruong=new ArrayList<>();
     private List<News>newsListXuTheTieuDung=new ArrayList<>();
     private List<News>newsListReviews=new ArrayList<>();
@@ -22,16 +22,7 @@ public class PresenterXulyNews {
     private List<News>newsListSanPhamChoMe=new ArrayList<>();
 
 
-
-    private IPresenterXuLyNews mInterf;
-
-    private List<News>[]listTypeNews=new List[]{
-            newsListThongTinThiTruong,newsListXuTheTieuDung,newsListReviews,newsListTuVanMuaSam,newsListDienLanh,newsListOtoXemayXedap,newsListMeoVat,newsListSanPhamChoMe
-    };
-    public PresenterXulyNews(IPresenterXuLyNews mInterf){
-        this.mInterf=mInterf;
-    }
-    public void DownloadNews(){
+    public void downloadNews(){
         String contentThongTinThiTruong= DownloadJSON.getJson("/user/getNewsThongTinThiTruong");
         String contentXuTheTieuDung= DownloadJSON.getJson("/user/getNewsXuTheTieuDung");
         String contentReviews= DownloadJSON.getJson("/user/getNewsReviews");
@@ -66,6 +57,38 @@ public class PresenterXulyNews {
         if(contentSanPhamChoMe!=null){
             newsListSanPhamChoMe.addAll(xulyViewPagerTab.parserJSONNews(contentSanPhamChoMe));
         }
+    }
+
+    public List<News> getNewsListThongTinThiTruong() {
+        return newsListThongTinThiTruong;
+    }
+
+    public List<News> getNewsListXuTheTieuDung() {
+        return newsListXuTheTieuDung;
+    }
+
+    public List<News> getNewsListReviews() {
+        return newsListReviews;
+    }
+
+    public List<News> getNewsListTuVanMuaSam() {
+        return newsListTuVanMuaSam;
+    }
+
+    public List<News> getNewsListDienLanh() {
+        return newsListDienLanh;
+    }
+
+    public List<News> getNewsListOtoXemayXedap() {
+        return newsListOtoXemayXedap;
+    }
+
+    public List<News> getNewsListMeoVat() {
+        return newsListMeoVat;
+    }
+
+    public List<News> getNewsListSanPhamChoMe() {
+        return newsListSanPhamChoMe;
     }
 
 }

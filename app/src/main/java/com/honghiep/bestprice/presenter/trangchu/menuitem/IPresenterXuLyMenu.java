@@ -1,4 +1,4 @@
-package com.honghiep.bestprice.presenter.trangchu;
+package com.honghiep.bestprice.presenter.trangchu.menuitem;
 
 /**
  * Created by honghiep on 07/09/2017.

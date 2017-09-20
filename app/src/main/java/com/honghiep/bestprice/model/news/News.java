@@ -1,4 +1,4 @@
-package com.honghiep.apibestprice.model.news;
+package com.honghiep.bestprice.model.news;
 
 /**
  * Created by honghiep on 11/09/2017.

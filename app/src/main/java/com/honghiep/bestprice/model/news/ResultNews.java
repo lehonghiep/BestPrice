@@ -1,4 +1,4 @@
-package com.honghiep.apibestprice.model.news;
+package com.honghiep.bestprice.model.news;
 
 import java.util.List;
 
@@ -10,5 +10,9 @@ public class ResultNews {
 
     public ResultNews(List<News> newsList) {
         this.newsList = newsList;
+    }
+
+    public List<News> getNewsList() {
+        return newsList;
     }
 }

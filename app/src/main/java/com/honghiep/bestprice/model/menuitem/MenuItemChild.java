@@ -1,23 +1,34 @@
 package com.honghiep.bestprice.model.menuitem;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by honghiep on 07/09/2017.
  */
 
 public class MenuItemChild {
-    private String title;
-    private String link;
+    @SerializedName("idChild")
+    private int idChild;
+    @SerializedName("titleChild")
+    private String titleChild;
+    @SerializedName("linkChild")
+    private String linkChild;
 
-    public MenuItemChild(String title, String link) {
-        this.title = title;
-        this.link = link;
+    public MenuItemChild(int idChild, String title, String link) {
+        this.idChild=idChild;
+        this.titleChild = title;
+        this.linkChild = link;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitleChild() {
+        return titleChild;
     }
 
-    public String getLink() {
-        return link;
+    public String getLinkChild() {
+        return linkChild;
+    }
+
+    public int getIdChild() {
+        return idChild;
     }
 }
